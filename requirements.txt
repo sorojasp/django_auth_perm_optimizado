@@ -1,0 +1,5 @@
+Django==2.2
+cymysql
+django-cymysql==2.2
+djangorestframework
+django-guardian
