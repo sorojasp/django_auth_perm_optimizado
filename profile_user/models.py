@@ -10,7 +10,7 @@ from django.contrib.auth.models import BaseUserManager
 
 from rest_framework.authtoken.models import Token
 
-from example_2.hasher import hasher
+from example_2.hasher.EncriptadorBcrypt import EncriptadorBcrypt
 
 
 from django.contrib.auth.models import Permission
@@ -21,7 +21,7 @@ class UserProfileManager(BaseUserManager):
     
     """Manager for user profiles"""
 
-    hasher_obj=hasher.PBKDF2WrappedSHA1PasswordHasher()
+    hasher_obj=EncriptadorBcrypt()
 
 
     def create_user(self,email:str, password:str=None):
@@ -35,14 +35,12 @@ class UserProfileManager(BaseUserManager):
         email=self.normalize_email(email)
         user=self.model(email=email)
 
-        password_encoded:str=self.hasher_obj.encode(password,"recyapp",3)
-
 
         user.set_password(password)
         user.save(using=self.db)
 
         token, created = Token.objects.get_or_create(user=user)
-        print(f'Token desde el modelo{token}')
+        print(f'Token desde el modelo: {token}')
         return user
 
     def create_superuser(self, email,password):

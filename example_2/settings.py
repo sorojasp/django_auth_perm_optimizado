@@ -123,6 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+PASSWORD_HASHERS=['django.contrib.auth.hashers.BCryptSHA256PasswordHasher',]
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

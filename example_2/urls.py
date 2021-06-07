@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import include, path
 from perms import urls as perms_url 
 from homes import urls as homes_url
+from profile_user import urls as profile_user_url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include (homes_url)),
-    path('perms/', include(perms_url) )
-    
+    path('perms/', include(perms_url)),
+    path('user/',include(profile_user_url))
 ]

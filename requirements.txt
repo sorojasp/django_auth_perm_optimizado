@@ -3,3 +3,4 @@ cymysql
 django-cymysql==2.2
 djangorestframework
 django-guardian
+bcrypt==3.2.0
